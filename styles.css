@@ -1,0 +1,210 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #f1c9cc, #e83e8c);
+    margin: 0;
+    background-size: 400% 400%;
+    animation: gradientMove 10s ease infinite;
+}
+
+/* Estilo del contenedor de la carta */
+.carta-container {
+    position: relative;
+    width: 320px;
+    height: 240px;
+    text-align: center;
+    perspective: 1000px;
+}
+
+/* Estilo del sobre */
+.sobre {
+    background-color: #f1c9d8;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transform-origin: top;
+    transform: rotateX(0deg);
+    transition: transform 0.5s ease-in-out;
+}
+
+.sobre .triangulo {
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 30px solid #fff;
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.sobre .texto-sobre {
+    color: rgb(80, 80, 80);
+    font-size: 18px;
+    font-weight: bold;
+    position: absolute;
+    bottom: 15px;
+    width: 100%;
+}
+
+/* Estilo de la carta */
+.carta {
+    background-color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform-origin: top;
+    transform: scaleY(0);
+    transition: transform 0.5s ease-in-out;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.carta .contenido-carta {
+    color: #333;
+}
+
+.carta h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #e83e8c;
+    font-weight: bold;
+}
+
+.carta p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.carta p:last-child {
+    font-size: 18px;
+    font-weight: bold;
+    color: #e0277e;
+}
+
+/* Estilos para los corazones flotando */
+.corazones {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes flotar {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-100px) scale(1.5);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+/* Estilos para pantallas más pequeñas (móviles) */
+@media (max-width: 600px) {
+    .carta-container {
+        width: 250px;
+        height: 180px;
+    }
+
+    .sobre .triangulo {
+        border-left: 40px solid transparent;
+        border-right: 40px solid transparent;
+        border-bottom: 25px solid #ffffff;
+    }
+
+    .carta .contenido-carta {
+        padding: 15px;
+    }
+
+    .carta h2 {
+        font-size: 18px;
+    }
+
+    .carta p {
+        font-size: 14px;
+    }
+
+    .sobre .texto-sobre {
+        font-size: 14px;
+    }
+}
+
+/* Estilos para pantallas grandes (PC) */
+@media (min-width: 601px) {
+    .carta-container {
+        width: 320px;
+        height: 240px;
+    }
+
+    .sobre .triangulo {
+        border-left: 50px solid transparent;
+        border-right: 50px solid transparent;
+        border-bottom: 30px solid #fff;
+    }
+
+    .carta .contenido-carta {
+        padding: 20px;
+    }
+
+    .carta h2 {
+        font-size: 22px;
+    }
+
+    .carta p {
+        font-size: 16px;
+    }
+
+    .sobre .texto-sobre {
+        font-size: 18px;
+    }
+}
+
+/* Estilo para el corazón fuera del texto */
+.sobre .heart-icon {
+    font-size: 100px; /* Ajusta este valor para el tamaño que prefieras */
+    color: rgb(219, 45, 97); /* Puedes cambiar el color si lo deseas */
+    position: absolute;
+    top: 50px; /* Ajusta la posición para que quede centrado */
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Animación de fondo gradiente */
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
